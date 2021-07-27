@@ -69,11 +69,7 @@ public class RegisterActivity extends AppCompatActivity implements
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-
                         if (task.isSuccessful()){
-                            Log.d(TAG, "onComplete: AuthState: " + FirebaseAuth.getInstance().getCurrentUser().getUid());
-
                             //insert some default data
                             User user = new User();
                             user.setEmail(email);
@@ -93,21 +89,13 @@ public class RegisterActivity extends AppCompatActivity implements
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     hideDialog();
-
-                                    if(task.isSuccessful()){
-                                        redirectLoginScreen();
-                                    }else{
-                                        View parentLayout = findViewById(android.R.id.content);
-                                        Snackbar.make(parentLayout, "Something went wrong.", Snackbar.LENGTH_SHORT).show();
-                                    }
+                                    redirectLoginScreen();
                                 }
                             });
 
                         }
                         else {
-                            View parentLayout = findViewById(android.R.id.content);
-                            Snackbar.make(parentLayout, "Something went wrong.", Snackbar.LENGTH_SHORT).show();
-                            hideDialog();
+                            redirectLoginScreen();
                         }
 
                         // ...
@@ -146,8 +134,6 @@ public class RegisterActivity extends AppCompatActivity implements
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_register:{
-                Log.d(TAG, "onClick: attempting to register.");
-
                 //check for null valued EditText fields
                 if(!isEmpty(mEmail.getText().toString())
                         && !isEmpty(mPassword.getText().toString())

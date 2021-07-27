@@ -235,17 +235,17 @@ public class ChatroomActivity extends AppCompatActivity implements
     private void inflateUserListFragment(){
 		hideSoftKeyboard();
 		
-        UserListFragment fragment = UserListFragment.newInstance();
-        Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList(getString(R.string.intent_user_list), mUserList);
-        bundle.putParcelableArrayList(getString(R.string.intent_user_locations), mUserLocations);
-        fragment.setArguments(bundle);
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_up);
-        transaction.replace(R.id.user_list_container, fragment, getString(R.string.fragment_user_list));
-        transaction.addToBackStack(getString(R.string.fragment_user_list));
-        transaction.commit();
+//        UserListFragment fragment = UserListFragment.newInstance();
+//        Bundle bundle = new Bundle();
+//        bundle.putParcelableArrayList(getString(R.string.intent_user_list), mUserList);
+//        bundle.putParcelableArrayList(getString(R.string.intent_user_locations), mUserLocations);
+//        fragment.setArguments(bundle);
+//
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.setCustomAnimations(R.anim.slide_in_up, R.anim.slide_out_up);
+//        transaction.replace(R.id.user_list_container, fragment, getString(R.string.fragment_user_list));
+//        transaction.addToBackStack(getString(R.string.fragment_user_list));
+//        transaction.commit();
     }
 	
 	private void hideSoftKeyboard(){
